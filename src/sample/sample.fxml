@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.CheckMenuItem?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import sample.CustomTimeLine?>
+
+<GridPane fx:id="gridPane" alignment="CENTER" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.FrontController">
+    <columnConstraints>
+        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
+        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
+        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
+        <ColumnConstraints />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints valignment="CENTER" />
+        <RowConstraints valignment="CENTER" />
+        <RowConstraints fillHeight="false" maxHeight="0.0" minHeight="0.0" prefHeight="0.0" valignment="CENTER" />
+      <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+        <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
+      <RowConstraints />
+      <RowConstraints />
+    </rowConstraints>
+    <children>
+        <MenuBar fx:id="menubarMenu" GridPane.columnSpan="2147483647" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
+            <menus>
+                <Menu mnemonicParsing="false" text="Fichier">
+                    <items>
+                        <MenuItem fx:id="menuNewPlay" mnemonicParsing="false" text="Nouveau jeu... (CTRL-N)" />
+                        <MenuItem fx:id="menuNewSport" mnemonicParsing="false" text="Nouveau sport..." />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="menuNewGameObjective" mnemonicParsing="false" text="Nouvel objectif..." />
+                        <MenuItem fx:id="menuNewObstacle" mnemonicParsing="false" text="Nouvel obstacle..." />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem fx:id="menuSave" mnemonicParsing="false" text="Enregistrer (CTRL-S)" />
+                        <MenuItem fx:id="menuSaveUnder" disable="false" mnemonicParsing="false" text="Enregistrer-sous..." />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem fx:id="menuExport" disable="false" mnemonicParsing="false" text="Exporter..." />
+                        <MenuItem fx:id="menuExportBackend" disable="false" mnemonicParsing="false" text="Exporter backend" />
+                        <MenuItem fx:id="menuImportBackend" disable="false" mnemonicParsing="false" text="Importer backend" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem fx:id="menuQuit" mnemonicParsing="false" text="Quitter" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Édition">
+                    <items>
+                        <MenuItem fx:id="menuUndo" disable="false" mnemonicParsing="false" text="Annuler (CTRL-Z)" />
+                        <MenuItem fx:id="menuRedo" disable="false" mnemonicParsing="false" text="Refaire (CTRL-Y)" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <CheckMenuItem fx:id="menuShowPlayerInformations" mnemonicParsing="false" selected="true" text="Afficher informations joueurs" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Aide">
+                    <items>
+                        <MenuItem fx:id="menuDocumentation" disable="true" mnemonicParsing="false" text="Documentation..." />
+                        <MenuItem fx:id="menuHelp" disable="true" mnemonicParsing="false" text="Aide..." />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <ScrollPane fitToHeight="true" fitToWidth="true" maxWidth="-Infinity" minWidth="-Infinity" style="-fx-border-color: black;" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS">
+            <GridPane.margin>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </GridPane.margin>
+
+            <TreeView fx:id="treeViewPlays" editable="true" nodeOrientation="LEFT_TO_RIGHT" showRoot="false" style="-fx-border-color: transparent;" />
+
+
+        </ScrollPane>
+
+        <GridPane alignment="CENTER" style="-fx-border-color: black;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.rowSpan="2147483647" GridPane.valignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" percentWidth="50.0" />
+                <ColumnConstraints hgrow="SOMETIMES" percentWidth="50.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints percentHeight="60.0" valignment="CENTER" />
+                <RowConstraints fillHeight="false" />
+                <RowConstraints fillHeight="false" vgrow="NEVER" />
+                <RowConstraints fillHeight="false" valignment="CENTER" vgrow="NEVER" />
+            </rowConstraints>
+            <children>
+                <HBox alignment="CENTER" focusTraversable="true" spacing="15.0" style="-fx-background-color: lightgrey; -fx-border-color: black;" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                    <GridPane.margin>
+                        <Insets bottom="20.0" left="150.0" right="150.0" top="20.0" />
+                    </GridPane.margin>
+                    <children>
+                        <ImageView fx:id="buttonRewind" fitHeight="50.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../drawable/rewind.png" />
+                            </image>
+                            <cursor>
+                                <Cursor fx:constant="CLOSED_HAND" />
+                            </cursor>
+                        </ImageView>
+                  <ImageView fx:id="buttonSlower" fitHeight="50.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../drawable/fast-backward.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor>
+                  </ImageView>
+                        <ImageView fx:id="buttonPlayPause" fitHeight="68.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../drawable/play.png" />
+                            </image>
+                            <cursor>
+                                <Cursor fx:constant="CLOSED_HAND" />
+                            </cursor>
+                        </ImageView>
+                  <ImageView fx:id="buttonPause" fitHeight="68.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../drawable/pause.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor>
+                  </ImageView>
+                        <ImageView fx:id="buttonStop" fitHeight="59.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../drawable/stop.png" />
+                            </image>
+                            <cursor>
+                                <Cursor fx:constant="CLOSED_HAND" />
+                            </cursor>
+                        </ImageView>
+                  <ImageView fx:id="buttonFaster" fitHeight="45.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../drawable/faster.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor>
+                  </ImageView>
+                        <ImageView fx:id="buttonFastForward" fitHeight="45.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../drawable/fastforward.png" />
+                            </image>
+                            <cursor>
+                                <Cursor fx:constant="CLOSED_HAND" />
+                            </cursor>
+                        </ImageView>
+                    </children>
+                    <padding>
+                        <Insets left="25.0" right="25.0" />
+                    </padding>
+                </HBox>
+            <ScrollPane fx:id="scrollPaneForCanvas" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="NEVER" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin>
+               <content>
+                      <Canvas fx:id="canvasField" height="450.0" width="900.0">
+                          <effect>
+                              <Glow />
+                          </effect>
+                      </Canvas>
+               </content>
+            </ScrollPane>
+                <GridPane GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                    <GridPane.margin>
+                        <Insets />
+                    </GridPane.margin>
+                    <children>
+                        <Label fx:id="labelTimeleft" layoutX="795.0" layoutY="13.0" text="0:00" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </Label>
+                        <CustomTimeLine fx:id="customTimeLine" prefWidth="700.0" progress="0.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER">
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </padding>
+                        </CustomTimeLine>
+                    </children>
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="20.0" />
+                        <ColumnConstraints />
+                        <ColumnConstraints minWidth="10.0" percentWidth="10.0" />
+                        <ColumnConstraints minWidth="10.0" percentWidth="10.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints />
+                    </rowConstraints>
+                </GridPane>
+                <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="150.0" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" percentHeight="50.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" percentHeight="50.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Label fx:id="labelGameFieldHeight" alignment="CENTER_LEFT" contentDisplay="CENTER" focusTraversable="false" mouseTransparent="true" text="Y:" textAlignment="JUSTIFY" textOverrun="CLIP" visible="false" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                            <font>
+                                <Font name="System Bold" size="15.0" />
+                            </font>
+                            <effect>
+                                <DropShadow />
+                            </effect>
+                            <padding>
+                                <Insets left="20.0" />
+                            </padding>
+                        </Label>
+                        <Label fx:id="labelGameFieldWidth" alignment="CENTER_LEFT" contentDisplay="CENTER" focusTraversable="false" mouseTransparent="true" text="X:" textAlignment="JUSTIFY" textOverrun="CLIP" visible="false" wrapText="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                            <padding>
+                                <Insets left="20.0" />
+                            </padding>
+                            <font>
+                                <Font name="System Bold" size="15.0" />
+                            </font>
+                            <effect>
+                                <DropShadow />
+                            </effect>
+                        </Label>
+                      </children>
+                </GridPane>
+                <ToggleButton fx:id="togglebuttonViewMode" contentDisplay="CENTER" mnemonicParsing="false" text="Image par image" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                    <GridPane.margin>
+                        <Insets bottom="20.0" right="5.0" />
+                    </GridPane.margin>
+                </ToggleButton>
+            </children>
+         <GridPane.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </GridPane.margin>
+        </GridPane>
+
+        <ScrollPane fitToHeight="true" fitToWidth="true" maxWidth="-Infinity" minWidth="-Infinity" style="-fx-border-color: black;" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.rowSpan="2147483647" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS">
+            <TreeView fx:id="treeViewOthers" editable="true" nodeOrientation="LEFT_TO_RIGHT" showRoot="false" style="-fx-border-color: transparent;" GridPane.rowIndex="2" GridPane.rowSpan="2">
+                <GridPane.margin>
+                    <Insets left="10.0" right="10.0" />
+                </GridPane.margin>
+            </TreeView>
+            <GridPane.margin>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </GridPane.margin>
+        </ScrollPane>
+    </children>
+</GridPane>
